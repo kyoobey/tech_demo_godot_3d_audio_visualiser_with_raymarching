@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://RITCHRD - PARIS.ogg" type="AudioStream" id=1]
+[ext_resource path="res://spheres.shader" type="Shader" id=2]
+[ext_resource path="res://script.gd" type="Script" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/MAX_STEPS = 255
+shader_param/MAX_SHADING_DISTANCE = 100.0
+shader_param/angle_factor = 2.331
+shader_param/radius = 1.997
+shader_param/smoothness = 0.399
+shader_param/hist_1 = 0.859813
+shader_param/hist_2 = 0.859813
+shader_param/hist_3 = 0.859813
+shader_param/hist_4 = 0.859813
+shader_param/hist_5 = 0.859813
+shader_param/hist_6 = 0.859813
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 8, 8, 8 )
+subdivide_width = 10
+subdivide_height = 10
+subdivide_depth = 10
+
+[node name="root" type="Node"]
+script = ExtResource( 3 )
+accel = 5.0
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="visualiser" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
